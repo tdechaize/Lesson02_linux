@@ -1,0 +1,213 @@
+Directory des sources : /home/thierry/Sources/Opengl/Lesson01
+Nom de l'application  : lesson01
+Generateur  			: 
+-- The C compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/gcc32/Debug
+-- The C compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/gcc32/Release
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/bingcc32/Debug/lesson01.exe
+[100%] Built target lesson01
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/bingcc32/Release/lesson01.exe
+[100%] Built target lesson01
+-- The C compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/gcc64/Debug
+-- The C compiler identification is GNU 11.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/gcc64/Release
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/bingcc64/Debug/lesson01.exe
+[100%] Built target lesson01
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/bingcc64/Release/lesson01.exe
+[100%] Built target lesson01
+-- The C compiler identification is Clang 14.0.6
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/clang32/Debug
+-- The C compiler identification is Clang 14.0.6
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/clang32/Release
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/binclang32/Debug/lesson01.exe
+[100%] Built target lesson01
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/binclang32/Release/lesson01.exe
+[100%] Built target lesson01
+-- The C compiler identification is Clang 14.0.6
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/clang64/Debug
+-- The C compiler identification is Clang 14.0.6
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/thierry/Sources/Opengl/Lesson01/build.cmake/clang64/Release
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/binclang64/Debug/lesson01.exe
+[100%] Built target lesson01
+[ 50%] Building C object CMakeFiles/lesson01.dir/src/lesson01.c.o
+[100%] Linking C executable /home/thierry/Sources/Opengl/Lesson01/binclang64/Release/lesson01.exe
+[100%] Built target lesson01
+        Tableau récapitulatif de la taille des exécutables générés pour le projet : lesson01
+  Debug GCC 32b     :  19.2 KB et sa date dernière modification Mon Mar 20 17:39:40 2023 -> ./bingcc32/Debug/lesson01.exe.
+  Release GCC 32b   :  13.3 KB et sa date dernière modification Mon Mar 20 17:39:40 2023 -> ./bingcc32/Release/lesson01.exe.
+  Debug GCC 64b     :  20.7 KB et sa date dernière modification Mon Mar 20 17:39:40 2023 -> ./bingcc64/Debug/lesson01.exe.
+  Release GCC 64b   :  14.1 KB et sa date dernière modification Mon Mar 20 17:39:40 2023 -> ./bingcc64/Release/lesson01.exe.
+  Debug CLANG 32b   :  17.9 KB et sa date dernière modification Mon Mar 20 17:39:41 2023 -> ./binclang32/Debug/lesson01.exe.
+  Release CLANG 32b :  13.6 KB et sa date dernière modification Mon Mar 20 17:39:41 2023 -> ./binclang32/Release/lesson01.exe.
+  Debug CLANG 64b   :  23.5 KB et sa date dernière modification Mon Mar 20 17:39:41 2023 -> ./binclang64/Debug/lesson01.exe.
+  Release CLANG 64b :  18.5 KB et sa date dernière modification Mon Mar 20 17:39:42 2023 -> ./binclang64/Release/lesson01.exe.
+Tableau récapitulatif des différents checksums générés pour le projet : lesson01
+Calcul des cheksums du fichier : ./bingcc32/Debug/lesson01.exe.
+Checksum CRC32  is 84534d2d.
+Checksum MD5 is 619c369c901bbf7efdfb330b1ecdcc54.
+Checksum SHA256 is 2f83fe73d8e8b7089f335aa670c5271becafa96d50b0b6426ac7008abbf267b7.
+Checksum SHA512 is 0dfa1b6fa8bc63f0c5e113fbd24524c7317b8f0af3ef52654d40eb8e4c95f661a2ff5056e1b446915457654631c3042a3ab469db7a425085ff25f982a8cfd861.
+Checksum RipeMD160 is 8d2c8f98d4a50643131e10e6ad3314644d42d7d9.
+Checksum BLAKE2B is 3fbbc133b7efb33f3a0d7d09e4cd77f1d1229dac3d5f1a7adb693978b73374abd2367b7c5759f585a9de95725b18cbcc4147e545a98f422ebb0c9bf5d9240ef2.
+Calcul des cheksums du fichier : ./bingcc32/Release/lesson01.exe.
+Checksum CRC32  is 207560e3.
+Checksum MD5 is ca2dd827ec5225028032370be2661635.
+Checksum SHA256 is 6f8d1befe0b50b153bc42d64584254632818a31ff36fd9712bacc93493a67181.
+Checksum SHA512 is ae917854ee9873530750dfce4193726ad9687ff893dbbed7d990e9fe6828cd19fef353cd6822060c3d56179fd339541cd026e6c9fcdaedab665f3dbe4a741ca4.
+Checksum RipeMD160 is 9a53df849ff63010d69872f32b80a5b017563e7d.
+Checksum BLAKE2B is b350fb4b26f5bbaa0cfc75e6a4e4cdb817c4a66c440cdb74592bbc5b7ee6ac026741c7b9c9774ef27f09a5f59faf98372560d00b9c29c07f3d736b9c1195baa2.
+Calcul des cheksums du fichier : ./bingcc64/Debug/lesson01.exe.
+Checksum CRC32  is 79ab7e14.
+Checksum MD5 is 47520b5995b1a896682d51e6b301b1a2.
+Checksum SHA256 is 72e321cb59f0b3b24c8db199651f322714e029d61625fe02f61f8aa66f6e741c.
+Checksum SHA512 is 379d8a5f18d21f1db93ea112222448ff7cec26c3b40eef12aab2e6add28a547912049ec17baaf3f5b5e393fd7c3e17ced5b2a1822bdbbc6bc626e36841137af3.
+Checksum RipeMD160 is 9c7019ac0ff481f308b562c635f524634e51d4de.
+Checksum BLAKE2B is d7e826f5e7326998cc002b6e5b77e45ef79be0ba1fb79cf1919b813ebea5570f434bfd525b94e09cac9438ad7f857de235f7aeca22e8d98d7677fd39ac46c70d.
+Calcul des cheksums du fichier : ./bingcc64/Release/lesson01.exe.
+Checksum CRC32  is 95ec3e47.
+Checksum MD5 is 5e04e80bbc7234953899de36d0ff71b8.
+Checksum SHA256 is be5152cf5cd2150a05f56f50d55af2a94e97cdb4c8597fe7f0a5a0680701be0f.
+Checksum SHA512 is fd321869eb7e38e947e35bc4127532a349005285e02ced2ccf0f96fab4ba83c17f595bfd1cc335705242d3fd9fb8a2bdb928f9f736f04a49723306745d03b1f9.
+Checksum RipeMD160 is c704cf8ed8a73d72d3df0d9fd3bf36e1bf748dde.
+Checksum BLAKE2B is e333a0f59e1c969ea0cccb71d569b8a357563865b30399a64ff041a966881b35847c7e56a9286cd47fa9127b71cf209a7cb5a3d957c577fa6c364b74a68c071e.
+Calcul des cheksums du fichier : ./binclang32/Debug/lesson01.exe.
+Checksum CRC32  is 56eb8dec.
+Checksum MD5 is 36a88761fdde9c14985a850c2efa76ef.
+Checksum SHA256 is 5f14a52a210be684c7b2fde81228535a043a0414235ac65d8bb120bdeb354822.
+Checksum SHA512 is 9ac03c1828d39698f0f76b55ab7ac8ecc5704ce9530103eac1f3983aeec9ed1f75b190b7cbbb795b53ae2e1206bc7775a79eeffad7d1025c4230080b7317e241.
+Checksum RipeMD160 is 084ee13c4670405cc85e6df92f772f11a504fbd2.
+Checksum BLAKE2B is 02e6ec7c275e16ea53a2654ed298c65fb5ee4910f2482aee9cf73790ee2bbb1f4cb870a1ac370c42b0ccee5bddece683817736328d300021584449f339548734.
+Calcul des cheksums du fichier : ./binclang32/Release/lesson01.exe.
+Checksum CRC32  is 3afa2e18.
+Checksum MD5 is cf3e0adf8ff5aa71ac8a7296e5974e8c.
+Checksum SHA256 is 682ade1cbfe051a9acd18e11f1ab4b8d29b854ace7d5fb3f1b65651e73339fa5.
+Checksum SHA512 is 64744844fcb940383b6e3f6c25141ca37f826f3ecee9f3fc41cf482c0d9c28d88b17ad4c22e625230e40bccb33dec93d74729a16e63ee4bd34e57e8d8f12a471.
+Checksum RipeMD160 is b2b66fba292b9f8fcf70a0c1e1e66f34e35b6794.
+Checksum BLAKE2B is c64e3687bebe7ab084b3bcdf057e70bac2eecf6a6cb720a6b3a12eef3a0e16c3c115f7cfe8446ef8390ea6ee15b0179add5fe567d19191be934771d07d6e0248.
+Calcul des cheksums du fichier : ./binclang64/Debug/lesson01.exe.
+Checksum CRC32  is ae66218e.
+Checksum MD5 is 6c4d3f0f1e26a25af554e8772ec62f23.
+Checksum SHA256 is bab4fdda7df62b9b854a8965d82c7470ab86d96b494c3d97f08dcb2461a23bc6.
+Checksum SHA512 is 7df650e167a0eadeafa16181671a56ffbf2a0580e757a4e8ba27a2645b0e0c701fff899168a62c0818c08f0b27f59a723ef3000cd09964de5d2b89ae6deab02e.
+Checksum RipeMD160 is 524571e11c0d600c18e2d863062207ebdeff3cbd.
+Checksum BLAKE2B is c43e514e7ba7a7f1d10b6e9814d3717d42c9a4ab3d80ac957073a22709226902b752f7c8d2322c602899ff35a031fe6036e3a2963a58bf0130fdc4121a734845.
+Calcul des cheksums du fichier : ./binclang64/Release/lesson01.exe.
+Checksum CRC32  is 12ca5fe6.
+Checksum MD5 is 098acc2f80a52f4f9787fa5019330b8d.
+Checksum SHA256 is 1346995e253901a141bc638236971fb6fed6f314b3dd506d66365c8a8d5fcd4a.
+Checksum SHA512 is 49074a926612c022db58e8bc79efb4874ff985c3a9bd40b145bda88e6a99c70dc15c9f573f8ad5c58404aa3cf9c196bb0e87dde8dd5f1f4bbb259e0e186f58c3.
+Checksum RipeMD160 is 9bfa26c0cd67c5b45d400f60bc49cbf9532f4f15.
+Checksum BLAKE2B is ecf438a2e856af7a5921a8516aaeb41a269612db3c297356bdae62181ca731d339b326921816870cfa627496a3023ded29dfdc354f0cc725a7982cb555f662b1.
+Jour : 20
+Mois : 03
+Ann?e : 2023
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+121 folders, 430 files, 3365965 bytes (3288 KiB)
+
+Creating archive: lesson01_2023-03-20_src.7z
+
+Items to compress: 551
+
+
+Files read from disk: 430
+Archive size: 336025 bytes (329 KiB)
+Everything is Ok
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+157 folders, 512 files, 3681636 bytes (3596 KiB)
+
+Creating archive: lesson01-2023-03_20_all.tar
+
+Items to compress: 669
+
+
+Files read from disk: 669
+Archive size: 4173312 bytes (4076 KiB)
+Everything is Ok
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=fr_FR.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz (A0652),ASM,AES-NI)
+
+Scanning the drive:
+1 file, 4173312 bytes (4076 KiB)
+
+Creating archive: lesson01_2023-03-20_all.7z
+
+Items to compress: 1
+
+
+Files read from disk: 1
+Archive size: 360314 bytes (352 KiB)
+Everything is Ok

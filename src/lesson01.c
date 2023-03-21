@@ -68,7 +68,8 @@ OpenGL Lesson 01:  Creating An First OpenGL Window with glut on Linux
 #include <GL/glu.h>	  // Header File For The GLU Library
 #include <GL/gl.h>	  // Header File For The OpenGL Library
 
-#include <unistd.h>     // Header file for sleeping.
+#define _XOPEN_SOURCE   600  // Needed because use of function usleep depend of these two define ...!!! However function usleep appear like "... warning: implicit declaration of ..."
+#include <unistd.h>     // Header file for sleeping (function usleep)
 
 /* ascii code for the escape key */
 #define ESCAPE 27

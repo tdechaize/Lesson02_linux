@@ -191,11 +191,11 @@ OpenGL Lesson01:  Creating An First OpenGL Window with glut on Linux
 				<ExtraCommands>
 					<Add before="rm --interactive=never *.7z || true" />
 					<Add before="rm --interactive=never *.tar || true" />
-					<Add before="python3 /home/thierry/Sources/Tools/Size_exec.py $(PROJECT_NAME)" />
-					<Add before="python3 /home/thierry/Sources/Tools/Calc_checksums.py $(PROJECT_NAME)" />
-					<Add after='7z a $(PROJECT_NAME)_&quot;`date +&quot;%d-%m-%Y&quot;`&quot;_src.7z src/* res/* data/* build.cmake/* build.shell/* *.bat *.txt *.html *.md doxygen/* doc/* *.cbp *.workspace &apos;-x!*.bak&apos; -mhe=on -p&quot;$(PROJECT_NAME)_tde@03!&quot;' />
-					<Add after='7z a -ttar $(PROJECT_NAME)_&quot;`date +&quot;%d-%m-%Y&quot;`&quot;_all.tar * &apos;-x!*.bak&apos;  &apos;-x!*.7z&apos; ' />
-					<Add after='7z a $(PROJECT_NAME)_&quot;`date +&quot;%d-%m-%Y&quot;`&quot;_all.7z *_all.tar -mhe=on -p&quot;$(PROJECT_NAME)_tde@03!&quot;' />
+					<Add before="python3 /home/thierry/Sources/tools/Size_exec.py $(PROJECT_NAME)" />
+					<Add before="python3 /home/thierry/Sources/tools/Calc_checksums.py $(PROJECT_NAME)" />
+					<Add after='7z a $(PROJECT_NAME)_&quot;`date +&quot;%Y-%m-%d&quot;`&quot;_src.7z src/* res/* data/* build.cmake/* build.shell/* *.bat *.txt *.html *.md doxygen/* doc/* *.cbp *.workspace &apos;-x!*.bak&apos; -mhe=on -p&quot;$(PROJECT_NAME)_tde@03!&quot;' />
+					<Add after='7z a -ttar $(PROJECT_NAME)_&quot;`date +&quot;%Y-%m-%d&quot;`&quot;_all.tar * &apos;-x!*.bak&apos;  &apos;-x!*.7z&apos;' />
+					<Add after='7z a $(PROJECT_NAME)_&quot;`date +&quot;%Y-%m-%d&quot;`&quot;_all.7z *_all.tar -mhe=on -p&quot;$(PROJECT_NAME)_tde@03!&quot;' />
 					<Add after="rm --interactive=never *.tar || true" />
 				</ExtraCommands>
 			</Target>

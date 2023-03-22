@@ -48,16 +48,16 @@ OpenGL Lesson 01:  Creating An First OpenGL Window with glut on Linux
 *       -> sudo apt-get install freeglut3 libglew-dev gcc g++ mesa-common-dev build-essential libglew2.2 libglm-dev binutils libc6 libc6-dev ; option -m32 to 32 bits ; no option to 64 bits
 *	b) CLANG version 14.0.6 (32 et 64 bits), adossé aux environnements gcc : commande pour l'installation sur Linux Mint
 *       -> sudo apt-get install llvm clang ; options pour la compilation et l'édition de liens -> --target=i686-pc-linux-gnu (32 bits) --target=x86_64-pc-linux-gnu (64 bits)
-*	c) Mingw 32 ou 64 bits version gcc version 10-win32 20220113 : commande pour l'installation sur Linux Mint
+*	c) Mingw 32 ou 64 bits version gcc version 10-win32 20220113 : commande pour l'installation sur Linux Mint   (NOT YET ACTIVED. Because portability of this code is not verified !!!)
 *        -> sudo apt-get install mingw64    (ATTENTION, il s'agit d'une cross génération : l'exécutable créé ne fonctionne que sur Windows !!!)
 *
-*  Date : 2022/12/28
+*  Date : 2023/03/22
 *
 * \file            lesson01.c
 * \author          Jeff Molofee ( NeHe ) originely, adapted by Richard Campbell, and after by Thierry Dechaize
 * \version         2.0.1.0
-* \date            28 décembre 2022
-* \brief           Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut.
+* \date            22 mars 2023
+* \brief           Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. 2023 : ajout d'une fonction de trace si besoin de debug.
 * \details         Ce programme gére plusieurs événements : le clic sur le bouton "Fermé" de la fenêtre, la sortie par la touche ESC ou par les touches "q" ou "Q" [Quit]
 * \details                                                  l'appui sur les touches "f" ou "F" qui active ou non le "Full Screen" en mode flip-flop.
 *
@@ -70,9 +70,15 @@ OpenGL Lesson 01:  Creating An First OpenGL Window with glut on Linux
 
 #define _XOPEN_SOURCE   600  // Needed because use of function usleep depend of these two define ...!!! However function usleep appear like "... warning: implicit declaration of ..."
 #include <unistd.h>     // Header file for sleeping (function usleep)
+#include <stdio.h>      // Header file needed by use of printf in this code
+#include <string.h>     // Header file needed by use of strcmp in this code
+
+#include "logger.h"     //  added by Thierry DECHAIZE : logger for trace and debug if needed ... only in mode Debug !!!
 
 /* ascii code for the escape key */
 #define ESCAPE 27
+
+char *level_debug;    // added by Thierry DECHAIZE, needed in test of logging activity (only with DEBUG mode)
 
 /* The number of our GLUT window */
 int window;
@@ -97,6 +103,11 @@ float theta = 0.0f;
 
 void InitGL(int Width, int Height)	        // We call this right after our OpenGL window is created.
 {
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Begin function InitGL.");
+#endif // defined DEBUG
+
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);		// This Will Clear The Background Color To Black
   glClearDepth(1.0);				// Enables Clearing Of The Depth Buffer
   glDepthFunc(GL_LESS);				// The Type Of Depth Test To Do
@@ -109,6 +120,11 @@ void InitGL(int Width, int Height)	        // We call this right after our OpenG
   gluPerspective(45.0f,(GLfloat)Width/(GLfloat)Height,0.1f,100.0f);	// Calculate The Aspect Ratio Of The Window
 
   glMatrixMode(GL_MODELVIEW);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"End function InitGL.");
+#endif // defined DEBUG
 }
 
 /* The function called when our window is resized (which shouldn't happen, because we're fullscreen) */
@@ -125,6 +141,11 @@ void InitGL(int Width, int Height)	        // We call this right after our OpenG
 
 void ReSizeGLScene(int Width, int Height)
 {
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Begin function ResizeGLScene.");
+#endif // defined DEBUG
+
   if (Height==0)				// Prevent A Divide By Zero If The Window Is Too Small
     Height=1;
 
@@ -135,11 +156,16 @@ void ReSizeGLScene(int Width, int Height)
 
   gluPerspective(45.0f,(GLfloat)Width/(GLfloat)Height,0.1f,100.0f);
   glMatrixMode(GL_MODELVIEW);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"End function ResizeGLScene.");
+#endif // defined DEBUG
 }
 
 /* The main drawing function. */
 
-/**	            This function generate the scene with injstructions OpenGL
+/**	            This function generate the scene with instructions OpenGL
 *
 * \brief      Fonction DrawGLScene : fonction generant l'affichage attendu avec des instructions OpenGL
 * \details    Aucun paramètre dans ce cas de figure car tout est géré directement à l'intérieur de cette fonction d'affichage.
@@ -149,6 +175,10 @@ void ReSizeGLScene(int Width, int Height)
 
 void DrawGLScene()
 {
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Begin function DrawGLScene.");
+#endif // defined DEBUG
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);		// Clear The Screen And The Depth Buffer
     glLoadIdentity();				    // Reset The View
@@ -173,6 +203,10 @@ void DrawGLScene()
     theta += 1.0f;
     usleep (1);
 
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"End function DrawGLScene.");
+#endif // defined DEBUG
 }
 
 /* The function called whenever a key is pressed. */
@@ -241,6 +275,15 @@ void keyPressed(unsigned char key, int x, int y)
 
 int main(int argc, char **argv)
 {
+
+    level_debug=getenv("LEVEL");           // Added by Thierry DECHAIZE : récupérer la valeur de la variable d'environnement LEVEL
+    printf("Niveau de trace : %s.\n",level_debug);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Enter within main, before call of glutInit.");
+#endif // defined DEBUG
+
   /* Initialize GLUT state - glut will take any command line arguments that pertain to it or
      X Windows - look at its documentation at http://reality.sgi.com/mjk/spec3/spec3.html */
 
@@ -262,6 +305,11 @@ int main(int argc, char **argv)
      Alpha components supported
      Depth buffer */
 
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutInitDisplayMode.");
+#endif // defined DEBUG
+
 /**	            This Code initialize le mode d'affichage défini avec une fonction glut.
 *
 * \brief      Appel de la fonction glutInitDisplayMode(: fonction Glut initialisant le mode d'affichage.
@@ -272,6 +320,11 @@ int main(int argc, char **argv)
 */
 
   glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutInitWindowSize");
+#endif // defined DEBUG
 
   /* get a 640 x 480 window */
 
@@ -287,6 +340,12 @@ int main(int argc, char **argv)
 
   glutInitWindowSize(640, 480);
 
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutInitWindowPosition");
+#endif // defined DEBUG
+
   /* the window starts at the upper left corner of the screen */
 
 /**	            This Code initialize the position of the window into screen.
@@ -301,6 +360,11 @@ int main(int argc, char **argv)
 
   glutInitWindowPosition(0, 0);
 
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutCreateWindow");
+#endif // defined DEBUG
+
   /* Open a window */
 
 /**	            This Code create windows on Wayland with glut.
@@ -313,6 +377,11 @@ int main(int argc, char **argv)
 */
 
   window = glutCreateWindow("Jeff Molofee's GL Code Tutorial ... First Window - NeHe '99");
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutDisplayFunc");
+#endif // defined DEBUG
 
   /* Register the function to do all our OpenGL drawing. */
 
@@ -327,6 +396,11 @@ int main(int argc, char **argv)
 
   glutDisplayFunc(&DrawGLScene);
 
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutIdleFunc");
+#endif // defined DEBUG
+
 /**	            This Code rely the internal function DrawGLScene at the idle function of glut.
 *
 * \brief      Appel de la fonction glutIdleFunc : fonction d'attente de Glut permettant d'activer la fonction interne d'affichage.
@@ -339,6 +413,11 @@ int main(int argc, char **argv)
   /* Even if there are no events, redraw our gl scene. */
 
   glutIdleFunc(&DrawGLScene);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutReshapeFunc");
+#endif // defined DEBUG
 
   /* Register the function called when our window is resized. */
 
@@ -353,6 +432,11 @@ int main(int argc, char **argv)
 
   glutReshapeFunc(&ReSizeGLScene);
 
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutKeyboardFunc");
+#endif // defined DEBUG
+
   /* Register the function called when the keyboard is pressed. */
 
 /**	            This Code give pressed key used by this program.
@@ -365,6 +449,11 @@ int main(int argc, char **argv)
 */
 
   glutKeyboardFunc(&keyPressed);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of InitGL");
+#endif // defined DEBUG
 
   /* Initialize our window. */
 
@@ -379,6 +468,12 @@ int main(int argc, char **argv)
 */
 
   InitGL(640, 480);
+
+#ifdef DEBUG
+    if (strcmp(level_debug,"BASE") == 0 || strcmp(level_debug,"FULL") == 0)
+        log_print(__FILE__, __LINE__,"Next step within main, before call of glutMainLoop");
+#endif // defined DEBUG
+
 
   /* Start Event Processing Engine */
 

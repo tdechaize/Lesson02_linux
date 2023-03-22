@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['theta_8',['theta',['../lesson01_8c.html#aadfc5c227ca658a29a59a0ce6fc15792',1,'lesson01.c']]]
+  ['nfullscreen_12',['nFullScreen',['../lesson01_8c.html#af7a035f1a720fb7a4a279410f376800b',1,'lesson01.c']]]
 ];

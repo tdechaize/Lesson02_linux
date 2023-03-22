@@ -60,14 +60,12 @@ do
   nb_src=0
   fname=$(basename $eachfile)
   fbname=${fname%.*}
-  if [[ $nb_src -eq 0 ]]; then 
-      if [[ "$fbname" != "$NAME_APPLI" ]]; then 
-	     nb_src=$((nb_src+1))
-	     if [[ $nb_src -eq 1 ]]; then 
-			  echo $fbname > src_c.txt
-		 else
-			  echo $fbname >> src_c.txt			 
-	     fi
+  if [[ "$fbname" != "$NAME_APPLI" ]]; then 
+	  nb_src=$((nb_src+1))
+	  if [[ $nb_src -eq 1 ]]; then 
+	     echo $fbname > src_c.txt
+	  else
+		 echo $fbname >> src_c.txt			 
 	  fi
   fi 	  
 done

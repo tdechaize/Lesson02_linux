@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nfullscreen_16',['nFullScreen',['../lesson01_8c.html#af7a035f1a720fb7a4a279410f376800b',1,'lesson01.c']]]
+  ['ft_27',['ft',['../logger_8c.html#a724e7d2bbffb847aa6e987a006d4d13b',1,'logger.c']]]
 ];

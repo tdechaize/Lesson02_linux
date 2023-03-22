@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['theta_17',['theta',['../lesson01_8c.html#aadfc5c227ca658a29a59a0ce6fc15792',1,'lesson01.c']]]
+  ['level_5fdebug_28',['level_debug',['../lesson01_8c.html#ae9fb3d4767f6255c70dcd5123bbf2f54',1,'lesson01.c']]]
 ];

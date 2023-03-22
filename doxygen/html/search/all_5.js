@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_5',['main',['../lesson01_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'lesson01.c']]]
+  ['keypressed_5',['keyPressed',['../lesson01_8c.html#ae49b22892a1276b5e664963496a34177',1,'lesson01.c']]]
 ];

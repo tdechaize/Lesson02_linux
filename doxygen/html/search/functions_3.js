@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_14',['main',['../lesson01_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'lesson01.c']]]
+  ['log_5fprint_23',['log_print',['../logger_8c.html#abd2d19eeef46a8184a2302d33c6c7397',1,'log_print(char *filename, int line, char *fmt,...):&#160;logger.c'],['../logger_8h.html#abd2d19eeef46a8184a2302d33c6c7397',1,'log_print(char *filename, int line, char *fmt,...):&#160;logger.c']]]
 ];

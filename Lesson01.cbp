@@ -217,6 +217,27 @@ OpenGL Lesson01:  Creating An First OpenGL Window with glut on Linux
 			<Option target="CLANG 64b Debug" />
 			<Option target="CLANG 64b Release" />
 		</Unit>
+		<Unit filename="src/logger.c">
+			<Option compilerVar="CC" />
+			<Option target="GNUC 32b Debug" />
+			<Option target="GNUC 32b Release" />
+			<Option target="GNUC 64b Debug" />
+			<Option target="GNUC 64b Release" />
+			<Option target="CLANG 32b Debug" />
+			<Option target="CLANG 32b Release" />
+			<Option target="CLANG 64b Debug" />
+			<Option target="CLANG 64b Release" />
+		</Unit>
+		<Unit filename="src/logger.h">
+			<Option target="GNUC 32b Debug" />
+			<Option target="GNUC 32b Release" />
+			<Option target="GNUC 64b Debug" />
+			<Option target="GNUC 64b Release" />
+			<Option target="CLANG 32b Debug" />
+			<Option target="CLANG 32b Release" />
+			<Option target="CLANG 64b Debug" />
+			<Option target="CLANG 64b Release" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

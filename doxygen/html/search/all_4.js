@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lesson01_2ec_4',['lesson01.c',['../lesson01_8c.html',1,'']]]
+  ['initgl_4',['InitGL',['../lesson01_8c.html#ac8d2055368b431f82f03449410409ad0',1,'lesson01.c']]]
 ];

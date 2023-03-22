@@ -2,13 +2,16 @@
 \label{lesson01_8c}\index{/home/thierry/Sources/Opengl/Lesson01/src/lesson01.c@{/home/thierry/Sources/Opengl/Lesson01/src/lesson01.c}}
 
 
-Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec Open\+GL + glut.  
+Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec Open\+GL + glut. 2023 \+: ajout d\textquotesingle{}une fonction de trace si besoin de debug.  
 
 
 {\ttfamily \#include $<$GL/glut.\+h$>$}\newline
 {\ttfamily \#include $<$GL/glu.\+h$>$}\newline
 {\ttfamily \#include $<$GL/gl.\+h$>$}\newline
 {\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
 Include dependency graph for lesson01.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -18,6 +21,8 @@ Include dependency graph for lesson01.\+c\+:\nopagebreak
 \end{figure}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ \+\_\+\+XOPEN\+\_\+\+SOURCE}~600
 \item 
 \#define \textbf{ ESCAPE}~27
 \end{DoxyCompactItemize}
@@ -37,6 +42,8 @@ int \textbf{ main} (int argc, char $\ast$$\ast$argv)
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+char $\ast$ \textbf{ level\+\_\+debug}
+\item 
 int \textbf{ window}
 \item 
 int \textbf{ n\+Full\+Screen} =0
@@ -46,7 +53,7 @@ float \textbf{ theta} = 0.\+0f
 
 
 \doxysubsection{Detailed Description}
-Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec Open\+GL + glut. 
+Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec Open\+GL + glut. 2023 \+: ajout d\textquotesingle{}une fonction de trace si besoin de debug. 
 
 Comments manageable by Doxygen
 
@@ -54,9 +61,9 @@ Modified smoothly by Thierry DECHAIZE
 
 Paradigm \+: obtain one source (only one !) compatible for multiple free C Compilers and provide for all users an development environment on Linux (64 bits compatible), the great Code\+::\+Blocks manager (version 20.\+03), and don\textquotesingle{}t use glaux.\+lib or glaux.\+dll.
 
-a) gcc 11.\+3.\+0 (32 and 64 bits) version officielle \+: commande pour l\textquotesingle{}installation sur Linux Mint -\/$>$ sudo apt-\/get install freeglut3 libglew-\/dev gcc g++ mesa-\/common-\/dev build-\/essential libglew2.\+2 libglm-\/dev binutils libc6 libc6-\/dev ; option -\/m32 to 32 bits ; no option to 64 bits b) CLANG version 14.\+0.\+6 (32 et 64 bits), adossé aux environnements gcc \+: commande pour l\textquotesingle{}installation sur Linux Mint -\/$>$ sudo apt-\/get install llvm clang ; options pour la compilation et l\textquotesingle{}édition de liens -\/$>$ --target=i686-\/pc-\/linux-\/gnu (32 bits) --target=x86\+\_\+64-\/pc-\/linux-\/gnu (64 bits) c) Mingw 32 ou 64 bits version gcc version 10-\/win32 20220113 \+: commande pour l\textquotesingle{}installation sur Linux Mint -\/$>$ sudo apt-\/get install mingw64 (ATTENTION, il s\textquotesingle{}agit d\textquotesingle{}une cross génération \+: l\textquotesingle{}exécutable créé ne fonctionne que sur Windows !!!)
+a) gcc 11.\+3.\+0 (32 and 64 bits) version officielle \+: commande pour l\textquotesingle{}installation sur Linux Mint -\/$>$ sudo apt-\/get install freeglut3 libglew-\/dev gcc g++ mesa-\/common-\/dev build-\/essential libglew2.\+2 libglm-\/dev binutils libc6 libc6-\/dev ; option -\/m32 to 32 bits ; no option to 64 bits b) CLANG version 14.\+0.\+6 (32 et 64 bits), adossé aux environnements gcc \+: commande pour l\textquotesingle{}installation sur Linux Mint -\/$>$ sudo apt-\/get install llvm clang ; options pour la compilation et l\textquotesingle{}édition de liens -\/$>$ --target=i686-\/pc-\/linux-\/gnu (32 bits) --target=x86\+\_\+64-\/pc-\/linux-\/gnu (64 bits) c) Mingw 32 ou 64 bits version gcc version 10-\/win32 20220113 \+: commande pour l\textquotesingle{}installation sur Linux Mint (NOT YET ACTIVED. Because portability of this code is not verified !!!) -\/$>$ sudo apt-\/get install mingw64 (ATTENTION, il s\textquotesingle{}agit d\textquotesingle{}une cross génération \+: l\textquotesingle{}exécutable créé ne fonctionne que sur Windows !!!)
 
-Date \+: 2022/12/28
+Date \+: 2023/03/22
 
 \begin{DoxyAuthor}{Author}
 Jeff Molofee ( Ne\+He ) originely, adapted by Richard Campbell, and after by Thierry Dechaize 
@@ -65,13 +72,23 @@ Jeff Molofee ( Ne\+He ) originely, adapted by Richard Campbell, and after by Thi
 2.\+0.\+1.\+0 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-28 décembre 2022
+22 mars 2023
 \end{DoxyDate}
 Ce programme gére plusieurs événements \+: le clic sur le bouton \char`\"{}\+Fermé\char`\"{} de la fenêtre, la sortie par la touche ESC ou par les touches \char`\"{}q\char`\"{} ou \char`\"{}\+Q\char`\"{} [Quit]
 
 l\textquotesingle{}appui sur les touches \char`\"{}f\char`\"{} ou \char`\"{}\+F\char`\"{} qui active ou non le \char`\"{}\+Full Screen\char`\"{} en mode flip-\/flop. 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\label{lesson01_8c_a78c99ffd76a7bb3c8c74db76207e9ab4}} 
+\index{lesson01.c@{lesson01.c}!\_XOPEN\_SOURCE@{\_XOPEN\_SOURCE}}
+\index{\_XOPEN\_SOURCE@{\_XOPEN\_SOURCE}!lesson01.c@{lesson01.c}}
+\doxysubsubsection{\_XOPEN\_SOURCE}
+{\footnotesize\ttfamily \#define \+\_\+\+XOPEN\+\_\+\+SOURCE~600}
+
+
+
+Definition at line 71 of file lesson01.\+c.
+
 \mbox{\label{lesson01_8c_afe4b0e625372cd38ec60150d6f5594b8}} 
 \index{lesson01.c@{lesson01.c}!ESCAPE@{ESCAPE}}
 \index{ESCAPE@{ESCAPE}!lesson01.c@{lesson01.c}}
@@ -80,7 +97,7 @@ l\textquotesingle{}appui sur les touches \char`\"{}f\char`\"{} ou \char`\"{}\+F\
 
 
 
-Definition at line 74 of file lesson01.\+c.
+Definition at line 79 of file lesson01.\+c.
 
 
 
@@ -95,15 +112,22 @@ Definition at line 74 of file lesson01.\+c.
 
 Fonction Draw\+GLScene \+: fonction generant l\textquotesingle{}affichage attendu avec des instructions Open\+GL. 
 
-This function generate the scene with injstructions Open\+GL
+This function generate the scene with instructions Open\+GL
 
 Aucun paramètre dans ce cas de figure car tout est géré directement à l\textquotesingle{}intérieur de cette fonction d\textquotesingle{}affichage. \begin{DoxyReturn}{Returns}
 void aucun retour. 
 \end{DoxyReturn}
 
 
-Definition at line 146 of file lesson01.\+c.
+Definition at line 176 of file lesson01.\+c.
 
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{lesson01_8c_a3f50a3778a5799e1dd9cf4547cf73ad3_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -135,8 +159,15 @@ void aucun retour.
 \end{DoxyReturn}
 
 
-Definition at line 96 of file lesson01.\+c.
+Definition at line 104 of file lesson01.\+c.
 
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{lesson01_8c_ac8d2055368b431f82f03449410409ad0_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -170,7 +201,7 @@ void aucun retour.
 \end{DoxyReturn}
 
 
-Definition at line 187 of file lesson01.\+c.
+Definition at line 225 of file lesson01.\+c.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -338,13 +369,13 @@ void aucun retour de fonction.
 \end{DoxyReturn}
 
 
-Definition at line 239 of file lesson01.\+c.
+Definition at line 276 of file lesson01.\+c.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=243pt]{lesson01_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\includegraphics[width=332pt]{lesson01_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
 \end{center}
 \end{figure}
 \mbox{\label{lesson01_8c_aaeedc5c1c90eff3a2950f1a2dbbdac6c}} 
@@ -371,8 +402,15 @@ void aucun retour.
 \end{DoxyReturn}
 
 
-Definition at line 123 of file lesson01.\+c.
+Definition at line 142 of file lesson01.\+c.
 
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{lesson01_8c_aaeedc5c1c90eff3a2950f1a2dbbdac6c_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -383,6 +421,16 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\label{lesson01_8c_ae9fb3d4767f6255c70dcd5123bbf2f54}} 
+\index{lesson01.c@{lesson01.c}!level\_debug@{level\_debug}}
+\index{level\_debug@{level\_debug}!lesson01.c@{lesson01.c}}
+\doxysubsubsection{level\_debug}
+{\footnotesize\ttfamily char$\ast$ level\+\_\+debug}
+
+
+
+Definition at line 81 of file lesson01.\+c.
+
 \mbox{\label{lesson01_8c_af7a035f1a720fb7a4a279410f376800b}} 
 \index{lesson01.c@{lesson01.c}!nFullScreen@{nFullScreen}}
 \index{nFullScreen@{nFullScreen}!lesson01.c@{lesson01.c}}
@@ -391,7 +439,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 80 of file lesson01.\+c.
+Definition at line 87 of file lesson01.\+c.
 
 \mbox{\label{lesson01_8c_aadfc5c227ca658a29a59a0ce6fc15792}} 
 \index{lesson01.c@{lesson01.c}!theta@{theta}}
@@ -401,7 +449,7 @@ Definition at line 80 of file lesson01.\+c.
 
 
 
-Definition at line 83 of file lesson01.\+c.
+Definition at line 90 of file lesson01.\+c.
 
 \mbox{\label{lesson01_8c_a65ba7a0b8164c01b33d92b9ab0f2af03}} 
 \index{lesson01.c@{lesson01.c}!window@{window}}
@@ -411,5 +459,5 @@ Definition at line 83 of file lesson01.\+c.
 
 
 
-Definition at line 77 of file lesson01.\+c.
+Definition at line 84 of file lesson01.\+c.
 

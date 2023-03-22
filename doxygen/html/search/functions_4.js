@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resizeglscene_15',['ReSizeGLScene',['../lesson01_8c.html#aaeedc5c1c90eff3a2950f1a2dbbdac6c',1,'lesson01.c']]]
+  ['main_24',['main',['../lesson01_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'lesson01.c']]]
 ];

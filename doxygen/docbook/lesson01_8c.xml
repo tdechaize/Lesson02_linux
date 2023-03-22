@@ -4,13 +4,16 @@
 <indexterm><primary>/home/thierry/Sources/Opengl/Lesson01/src/lesson01.c</primary></indexterm>
 <para>
 
-<para>Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. </para>
+<para>Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. 2023 : ajout d&apos;une fonction de trace si besoin de debug. </para>
  
 </para>
 <programlisting>#include &lt;GL/glut.h&gt;
 #include &lt;GL/glu.h&gt;
 #include &lt;GL/gl.h&gt;
 #include &lt;unistd.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &quot;logger.h&quot;
 </programlisting>Include dependency graph for lesson01.c:<para>
     <informalfigure>
         <mediaobject>
@@ -23,6 +26,8 @@
 <simplesect>
     <title>Macros    </title>
         <itemizedlist>
+            <listitem><para>#define <link linkend="_lesson01_8c_1a78c99ffd76a7bb3c8c74db76207e9ab4">_XOPEN_SOURCE</link>   600</para>
+</listitem>
             <listitem><para>#define <link linkend="_lesson01_8c_1afe4b0e625372cd38ec60150d6f5594b8">ESCAPE</link>   27</para>
 </listitem>
         </itemizedlist>
@@ -55,6 +60,8 @@
 <simplesect>
     <title>Variables    </title>
         <itemizedlist>
+            <listitem><para>char * <link linkend="_lesson01_8c_1ae9fb3d4767f6255c70dcd5123bbf2f54">level_debug</link></para>
+</listitem>
             <listitem><para>int <link linkend="_lesson01_8c_1a65ba7a0b8164c01b33d92b9ab0f2af03">window</link></para>
 </listitem>
             <listitem><para>int <link linkend="_lesson01_8c_1af7a035f1a720fb7a4a279410f376800b">nFullScreen</link> =0</para>
@@ -66,7 +73,7 @@
 <section>
 <title>Detailed Description</title>
 
-<para>Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. </para>
+<para>Ouvre une simple fenêtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. 2023 : ajout d&apos;une fonction de trace si besoin de debug. </para>
 
 <para>Comments manageable by Doxygen</para>
 
@@ -74,9 +81,9 @@
 
 <para>Paradigm : obtain one source (only one !) compatible for multiple free C Compilers and provide for all users an development environment on Linux (64 bits compatible), the great Code::Blocks manager (version 20.03), and don&apos;t use glaux.lib or glaux.dll.</para>
 
-<para>a) gcc 11.3.0 (32 and 64 bits) version officielle : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install freeglut3 libglew-dev gcc g++ mesa-common-dev build-essential libglew2.2 libglm-dev binutils libc6 libc6-dev ; option -m32 to 32 bits ; no option to 64 bits b) CLANG version 14.0.6 (32 et 64 bits), adossé aux environnements gcc : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install llvm clang ; options pour la compilation et l&apos;édition de liens -&gt; &#8211;target=i686-pc-linux-gnu (32 bits) &#8211;target=x86_64-pc-linux-gnu (64 bits) c) Mingw 32 ou 64 bits version gcc version 10-win32 20220113 : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install mingw64 (ATTENTION, il s&apos;agit d&apos;une cross génération : l&apos;exécutable créé ne fonctionne que sur Windows !!!)</para>
+<para>a) gcc 11.3.0 (32 and 64 bits) version officielle : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install freeglut3 libglew-dev gcc g++ mesa-common-dev build-essential libglew2.2 libglm-dev binutils libc6 libc6-dev ; option -m32 to 32 bits ; no option to 64 bits b) CLANG version 14.0.6 (32 et 64 bits), adossé aux environnements gcc : commande pour l&apos;installation sur Linux Mint -&gt; sudo apt-get install llvm clang ; options pour la compilation et l&apos;édition de liens -&gt; &#8211;target=i686-pc-linux-gnu (32 bits) &#8211;target=x86_64-pc-linux-gnu (64 bits) c) Mingw 32 ou 64 bits version gcc version 10-win32 20220113 : commande pour l&apos;installation sur Linux Mint (NOT YET ACTIVED. Because portability of this code is not verified !!!) -&gt; sudo apt-get install mingw64 (ATTENTION, il s&apos;agit d&apos;une cross génération : l&apos;exécutable créé ne fonctionne que sur Windows !!!)</para>
 
-<para>Date : 2022/12/28</para>
+<para>Date : 2023/03/22</para>
 
 <para><formalpara><title>Author</title>
 
@@ -88,7 +95,7 @@
 </formalpara>
 <formalpara><title>Date</title>
 
-<para>28 décembre 2022</para>
+<para>22 mars 2023</para>
 </formalpara>
 Ce programme gére plusieurs événements : le clic sur le bouton &quot;Fermé&quot; de la fenêtre, la sortie par la touche ESC ou par les touches &quot;q&quot; ou &quot;Q&quot; [Quit]</para>
 
@@ -96,12 +103,18 @@ Ce programme gére plusieurs événements : le clic sur le bouton &quot;Fermé&q
 </section>
 <section>
 <title>Macro Definition Documentation</title>
-<anchor xml:id="_lesson01_8c_1afe4b0e625372cd38ec60150d6f5594b8"/>    <section>
+<anchor xml:id="_lesson01_8c_1a78c99ffd76a7bb3c8c74db76207e9ab4"/>    <section>
+    <title>_XOPEN_SOURCE</title>
+<indexterm><primary>_XOPEN_SOURCE</primary><secondary>lesson01.c</secondary></indexterm>
+<indexterm><primary>lesson01.c</primary><secondary>_XOPEN_SOURCE</secondary></indexterm>
+<para><computeroutput>#define _XOPEN_SOURCE   600</computeroutput></para><para>
+Definition at line 71 of file lesson01.c.</para>
+    </section><anchor xml:id="_lesson01_8c_1afe4b0e625372cd38ec60150d6f5594b8"/>    <section>
     <title>ESCAPE</title>
 <indexterm><primary>ESCAPE</primary><secondary>lesson01.c</secondary></indexterm>
 <indexterm><primary>lesson01.c</primary><secondary>ESCAPE</secondary></indexterm>
 <para><computeroutput>#define ESCAPE   27</computeroutput></para><para>
-Definition at line 74 of file lesson01.c.</para>
+Definition at line 79 of file lesson01.c.</para>
 </section>
 </section>
 <section>
@@ -115,7 +128,7 @@ Definition at line 74 of file lesson01.c.</para>
 <para>Fonction DrawGLScene : fonction generant l&apos;affichage attendu avec des instructions OpenGL. </para>
 </para>
 
-<para>This function generate the scene with injstructions OpenGL</para>
+<para>This function generate the scene with instructions OpenGL</para>
 
 <para>Aucun paramètre dans ce cas de figure car tout est géré directement à l&apos;intérieur de cette fonction d&apos;affichage. <formalpara><title>Returns</title>
 
@@ -123,7 +136,16 @@ Definition at line 74 of file lesson01.c.</para>
 </formalpara>
 </para>
 <para>
-Definition at line 146 of file lesson01.c.</para>
+Definition at line 176 of file lesson01.c.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson01_8c_a3f50a3778a5799e1dd9cf4547cf73ad3_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 Here is the caller graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -177,7 +199,16 @@ Parameters                    </title>
 </formalpara>
 </para>
 <para>
-Definition at line 96 of file lesson01.c.</para>
+Definition at line 104 of file lesson01.c.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson01_8c_ac8d2055368b431f82f03449410409ad0_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 Here is the caller graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -237,7 +268,7 @@ Parameters                    </title>
 </formalpara>
 </para>
 <para>
-Definition at line 187 of file lesson01.c.</para>
+Definition at line 225 of file lesson01.c.</para>
 Here is the caller graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -615,7 +646,7 @@ This Code run the permanently wait loop of events.</para>
 </formalpara>
 </para>
 <para>
-Definition at line 239 of file lesson01.c.</para>
+Definition at line 276 of file lesson01.c.</para>
 Here is the call graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -669,7 +700,16 @@ Parameters                    </title>
 </formalpara>
 </para>
 <para>
-Definition at line 123 of file lesson01.c.</para>
+Definition at line 142 of file lesson01.c.</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="lesson01_8c_aaeedc5c1c90eff3a2950f1a2dbbdac6c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
 Here is the caller graph for this function:<para>
     <informalfigure>
         <mediaobject>
@@ -683,24 +723,30 @@ Here is the caller graph for this function:<para>
 </section>
 <section>
 <title>Variable Documentation</title>
-<anchor xml:id="_lesson01_8c_1af7a035f1a720fb7a4a279410f376800b"/>    <section>
+<anchor xml:id="_lesson01_8c_1ae9fb3d4767f6255c70dcd5123bbf2f54"/>    <section>
+    <title>level_debug</title>
+<indexterm><primary>level_debug</primary><secondary>lesson01.c</secondary></indexterm>
+<indexterm><primary>lesson01.c</primary><secondary>level_debug</secondary></indexterm>
+<para><computeroutput>char* level_debug</computeroutput></para><para>
+Definition at line 81 of file lesson01.c.</para>
+    </section><anchor xml:id="_lesson01_8c_1af7a035f1a720fb7a4a279410f376800b"/>    <section>
     <title>nFullScreen</title>
 <indexterm><primary>nFullScreen</primary><secondary>lesson01.c</secondary></indexterm>
 <indexterm><primary>lesson01.c</primary><secondary>nFullScreen</secondary></indexterm>
 <para><computeroutput>int nFullScreen =0</computeroutput></para><para>
-Definition at line 80 of file lesson01.c.</para>
+Definition at line 87 of file lesson01.c.</para>
     </section><anchor xml:id="_lesson01_8c_1aadfc5c227ca658a29a59a0ce6fc15792"/>    <section>
     <title>theta</title>
 <indexterm><primary>theta</primary><secondary>lesson01.c</secondary></indexterm>
 <indexterm><primary>lesson01.c</primary><secondary>theta</secondary></indexterm>
 <para><computeroutput>float theta = 0.0f</computeroutput></para><para>
-Definition at line 83 of file lesson01.c.</para>
+Definition at line 90 of file lesson01.c.</para>
     </section><anchor xml:id="_lesson01_8c_1a65ba7a0b8164c01b33d92b9ab0f2af03"/>    <section>
     <title>window</title>
 <indexterm><primary>window</primary><secondary>lesson01.c</secondary></indexterm>
 <indexterm><primary>lesson01.c</primary><secondary>window</secondary></indexterm>
 <para><computeroutput>int window</computeroutput></para><para>
-Definition at line 77 of file lesson01.c.</para>
+Definition at line 84 of file lesson01.c.</para>
 </section>
 </section>
 </section>

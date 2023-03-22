@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keypressed_3',['keyPressed',['../lesson01_8c.html#ae49b22892a1276b5e664963496a34177',1,'lesson01.c']]]
+  ['ft_3',['ft',['../logger_8c.html#a724e7d2bbffb847aa6e987a006d4d13b',1,'logger.c']]]
 ];

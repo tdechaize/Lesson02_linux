@@ -7,7 +7,15 @@
         <itemizedlist>
             <listitem><para>file <link linkend="_lesson01_8c">lesson01.c</link></para>
 
-<para>Ouvre une simple fenÃªtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. </para>
+<para>Ouvre une simple fenÃªtre Wayland on Linux et dessine un triangle muticolore en rotation avec OpenGL + glut. 2023 : ajout d&apos;une fonction de trace si besoin de debug. </para>
+</listitem>
+            <listitem><para>file <link linkend="_logger_8c">logger.c</link></para>
+
+<para>Ajout de fonction de &quot;logging&quot; (traces dans un fichier texte log.txt) uniquement en mode Debug et avec des niveaux de tracing définis dans une variable d&apos;environnement (LEVEL) </para>
+</listitem>
+            <listitem><para>file <link linkend="_logger_8h">logger.h</link></para>
+
+<para>Header de l&apos;ajout de fonction de &quot;logging&quot; (traces dans un fichier texte log.txt) uniquement en mode Debug et avec des niveaux de tracing définis dans une variable d&apos;environnement (LEVEL) </para>
 </listitem>
         </itemizedlist>
 </simplesect>
